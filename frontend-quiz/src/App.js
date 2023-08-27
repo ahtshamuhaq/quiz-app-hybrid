@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import TestPage from "./pages/TestPage";
+import "./App.css"; // Ensure you have Tailwind classes imported in this file
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <nav className="p-4">
+          <Link to="/" className="mr-4">
+            Home
+          </Link>
+          <Link to="/test">Test</Link>
+        </nav>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/test" element={<TestPage />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
